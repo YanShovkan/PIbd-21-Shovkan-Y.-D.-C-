@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AirPlane.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="FormSeaplane.cs">
       <SubType>Form</SubType>
@@ -53,6 +54,8 @@
     <Compile Include="FormSeaplane.Designer.cs">
       <DependentUpon>FormSeaplane.cs</DependentUpon>
     </Compile>
+    <Compile Include="IAirTransport.cs" />
+    <Compile Include="Plane.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeaPlane.cs" />
