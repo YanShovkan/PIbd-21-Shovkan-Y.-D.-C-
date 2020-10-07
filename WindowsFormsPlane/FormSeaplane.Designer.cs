@@ -34,6 +34,7 @@
 			this.buttonUp = new System.Windows.Forms.Button();
 			this.buttonLeft = new System.Windows.Forms.Button();
 			this.pictureBoxPlane = new System.Windows.Forms.PictureBox();
+			this.buttonCreateSeaPlane = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlane)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -41,9 +42,9 @@
 			// 
 			this.buttonCreate.Location = new System.Drawing.Point(12, 12);
 			this.buttonCreate.Name = "buttonCreate";
-			this.buttonCreate.Size = new System.Drawing.Size(75, 23);
+			this.buttonCreate.Size = new System.Drawing.Size(143, 23);
 			this.buttonCreate.TabIndex = 1;
-			this.buttonCreate.Text = "СОЗДАТЬ";
+			this.buttonCreate.Text = "Создать самолет";
 			this.buttonCreate.UseVisualStyleBackColor = true;
 			this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
 			// 
@@ -105,11 +106,22 @@
 			this.pictureBoxPlane.TabIndex = 0;
 			this.pictureBoxPlane.TabStop = false;
 			// 
+			// buttonCreateSeaPlane
+			// 
+			this.buttonCreateSeaPlane.Location = new System.Drawing.Point(161, 12);
+			this.buttonCreateSeaPlane.Name = "buttonCreateSeaPlane";
+			this.buttonCreateSeaPlane.Size = new System.Drawing.Size(179, 23);
+			this.buttonCreateSeaPlane.TabIndex = 6;
+			this.buttonCreateSeaPlane.Text = "Создать гидросамолет";
+			this.buttonCreateSeaPlane.UseVisualStyleBackColor = true;
+			this.buttonCreateSeaPlane.Click += new System.EventHandler(this.buttonCreateSeaPlane_Click);
+			// 
 			// FormSeaplane
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(884, 461);
+			this.Controls.Add(this.buttonCreateSeaPlane);
 			this.Controls.Add(this.buttonUp);
 			this.Controls.Add(this.buttonRight);
 			this.Controls.Add(this.buttonDown);
@@ -131,6 +143,7 @@
 		private System.Windows.Forms.Button buttonDown;
 		private System.Windows.Forms.Button buttonRight;
 		private System.Windows.Forms.Button buttonUp;
+		private System.Windows.Forms.Button buttonCreateSeaPlane;
 	}
 }
 
