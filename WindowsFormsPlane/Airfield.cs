@@ -1,11 +1,13 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Drawing;
 
 namespace WindowsFormsPlane
 {
 	public class Airfield<T> where T : class, IAirTransport
 	{
-		private readonly T[] _places;
+		private readonly List<T> _places;
+
+		private readonly int _maxCount;
 
 		private readonly int pictureWidth;
 
@@ -20,52 +22,43 @@ namespace WindowsFormsPlane
 		{
 			int width = picWidth / _placeSizeWidth;
 			int height = picHeight / _placeSizeHeight;
-			_places = new T[width * height]; pictureWidth = picWidth;
+			_maxCount = width * height;
+			pictureWidth = picWidth;
 			pictureHeight = picHeight;
+			_places = new List<T>();
 		}
 
-		public static int operator +(Airfield<T> p, T plane)
+		public static bool operator +(Airfield<T> p, T plane)
 		{
-			for (int i = 0; i < p._places.Length; i++)
+			if (p._places.Count >= p._maxCount)
 			{
-				if (p._places[i] == null)
-				{
-					p._places[i] = plane;
-					return i;
-				}
+				return false;
 			}
-			return -1;
+			p._places.Add(plane);
+			return true;
 		}
-
 
 		public static T operator -(Airfield<T> p, int index)
 		{
-			if (index < 0 || index > p._places.Length)
+			if (index < 0 || index > p._places.Count - 1)
 			{
 				return null;
 			}
-			T temp = p._places[index];
-			p._places[index] = null;
-			return temp;
+			T plane = p._places[index];
+			p._places.RemoveAt(index);
+			return plane;
 		}
 
 		public void Draw(Graphics g)
 		{
 			DrawMarking(g);
-			for (int i = 0; i < _places.Length; i++)
+			for (int i = 0; i < _places.Count; ++i)
 			{
-				while(_places[i] == null)
-				{
-					i++;
-					if (i == _places.Length)
-					{
-						return;
-					}
-				}
-				_places[i].SetPosition(5 + i / 5 * _placeSizeWidth , i % 5 * _placeSizeHeight + 5, pictureWidth, pictureHeight);
-				_places[i]?.DrawPlane(g);
+				_places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 5, i % 5 * _placeSizeHeight + 15, pictureWidth, pictureHeight);
+				_places[i].DrawPlane(g);
 			}
 		}
+
 		private void DrawMarking(Graphics g)
 		{
 			Pen pen = new Pen(Color.Black, 3);
