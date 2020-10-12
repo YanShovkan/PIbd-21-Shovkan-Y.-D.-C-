@@ -11,8 +11,12 @@ namespace WindowsFormsPlane
 		{
 			InitializeComponent();
 		}
-
-		private void Draw()
+		public void SetCar(IAirTransport plane)
+		{
+			this.plane = plane;
+			Draw();
+		}
+			private void Draw()
 		{
 			Bitmap bmp = new Bitmap(pictureBoxPlane.Width, pictureBoxPlane.Height);
 			Graphics gr = Graphics.FromImage(bmp);
@@ -59,7 +63,5 @@ namespace WindowsFormsPlane
 			}
 			Draw();
 		}
-
-		
 	}
 }
