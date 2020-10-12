@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.pictureBoxAirfield = new System.Windows.Forms.PictureBox();
 			this.buttonPlane = new System.Windows.Forms.Button();
 			this.buttonSeaplane = new System.Windows.Forms.Button();
@@ -35,6 +36,12 @@
 			this.labelTake = new System.Windows.Forms.Label();
 			this.labelPlace = new System.Windows.Forms.Label();
 			this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
+			this.labelAirfield = new System.Windows.Forms.Label();
+			this.listBoxAirfield = new System.Windows.Forms.ListBox();
+			this.buttonAdd = new System.Windows.Forms.Button();
+			this.buttonDelete = new System.Windows.Forms.Button();
+			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.textBoxAirfieldName = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxAirfield)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -49,7 +56,7 @@
 			// 
 			// buttonPlane
 			// 
-			this.buttonPlane.Location = new System.Drawing.Point(657, 13);
+			this.buttonPlane.Location = new System.Drawing.Point(658, 205);
 			this.buttonPlane.Name = "buttonPlane";
 			this.buttonPlane.Size = new System.Drawing.Size(131, 72);
 			this.buttonPlane.TabIndex = 1;
@@ -59,7 +66,7 @@
 			// 
 			// buttonSeaplane
 			// 
-			this.buttonSeaplane.Location = new System.Drawing.Point(656, 91);
+			this.buttonSeaplane.Location = new System.Drawing.Point(657, 283);
 			this.buttonSeaplane.Name = "buttonSeaplane";
 			this.buttonSeaplane.Size = new System.Drawing.Size(131, 72);
 			this.buttonSeaplane.TabIndex = 2;
@@ -69,7 +76,7 @@
 			// 
 			// buttonTake
 			// 
-			this.buttonTake.Location = new System.Drawing.Point(657, 224);
+			this.buttonTake.Location = new System.Drawing.Point(658, 416);
 			this.buttonTake.Name = "buttonTake";
 			this.buttonTake.Size = new System.Drawing.Size(130, 23);
 			this.buttonTake.TabIndex = 3;
@@ -80,7 +87,7 @@
 			// labelTake
 			// 
 			this.labelTake.AutoSize = true;
-			this.labelTake.Location = new System.Drawing.Point(698, 179);
+			this.labelTake.Location = new System.Drawing.Point(699, 371);
 			this.labelTake.Name = "labelTake";
 			this.labelTake.Size = new System.Drawing.Size(89, 13);
 			this.labelTake.TabIndex = 4;
@@ -89,7 +96,7 @@
 			// labelPlace
 			// 
 			this.labelPlace.AutoSize = true;
-			this.labelPlace.Location = new System.Drawing.Point(698, 198);
+			this.labelPlace.Location = new System.Drawing.Point(699, 390);
 			this.labelPlace.Name = "labelPlace";
 			this.labelPlace.Size = new System.Drawing.Size(42, 13);
 			this.labelPlace.TabIndex = 5;
@@ -97,16 +104,71 @@
 			// 
 			// maskedTextBox
 			// 
-			this.maskedTextBox.Location = new System.Drawing.Point(746, 195);
+			this.maskedTextBox.Location = new System.Drawing.Point(747, 387);
 			this.maskedTextBox.Name = "maskedTextBox";
 			this.maskedTextBox.Size = new System.Drawing.Size(41, 20);
 			this.maskedTextBox.TabIndex = 6;
+			// 
+			// labelAirfield
+			// 
+			this.labelAirfield.AutoSize = true;
+			this.labelAirfield.Location = new System.Drawing.Point(690, 9);
+			this.labelAirfield.Name = "labelAirfield";
+			this.labelAirfield.Size = new System.Drawing.Size(64, 13);
+			this.labelAirfield.TabIndex = 7;
+			this.labelAirfield.Text = "Аэродром: ";
+			// 
+			// listBoxAirfield
+			// 
+			this.listBoxAirfield.FormattingEnabled = true;
+			this.listBoxAirfield.Location = new System.Drawing.Point(659, 80);
+			this.listBoxAirfield.Name = "listBoxAirfield";
+			this.listBoxAirfield.Size = new System.Drawing.Size(130, 95);
+			this.listBoxAirfield.TabIndex = 8;
+			this.listBoxAirfield.SelectedIndexChanged += new System.EventHandler(this.listBoxAirfield_SelectedIndexChanged);
+			// 
+			// buttonAdd
+			// 
+			this.buttonAdd.Location = new System.Drawing.Point(658, 52);
+			this.buttonAdd.Name = "buttonAdd";
+			this.buttonAdd.Size = new System.Drawing.Size(130, 22);
+			this.buttonAdd.TabIndex = 10;
+			this.buttonAdd.Text = "Добавить аэродром";
+			this.buttonAdd.UseVisualStyleBackColor = true;
+			this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+			// 
+			// buttonDelete
+			// 
+			this.buttonDelete.Location = new System.Drawing.Point(659, 177);
+			this.buttonDelete.Name = "buttonDelete";
+			this.buttonDelete.Size = new System.Drawing.Size(130, 22);
+			this.buttonDelete.TabIndex = 11;
+			this.buttonDelete.Text = "Удалить аэродром";
+			this.buttonDelete.UseVisualStyleBackColor = true;
+			this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+			// 
+			// contextMenuStrip1
+			// 
+			this.contextMenuStrip1.Name = "contextMenuStrip1";
+			this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+			// 
+			// textBoxAirfieldName
+			// 
+			this.textBoxAirfieldName.Location = new System.Drawing.Point(659, 26);
+			this.textBoxAirfieldName.Name = "textBoxAirfieldName";
+			this.textBoxAirfieldName.Size = new System.Drawing.Size(129, 20);
+			this.textBoxAirfieldName.TabIndex = 13;
 			// 
 			// FormAirfield
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.textBoxAirfieldName);
+			this.Controls.Add(this.buttonDelete);
+			this.Controls.Add(this.buttonAdd);
+			this.Controls.Add(this.listBoxAirfield);
+			this.Controls.Add(this.labelAirfield);
 			this.Controls.Add(this.maskedTextBox);
 			this.Controls.Add(this.labelPlace);
 			this.Controls.Add(this.labelTake);
@@ -131,5 +193,11 @@
 		private System.Windows.Forms.Label labelTake;
 		private System.Windows.Forms.Label labelPlace;
 		private System.Windows.Forms.MaskedTextBox maskedTextBox;
+		private System.Windows.Forms.Label labelAirfield;
+		private System.Windows.Forms.ListBox listBoxAirfield;
+		private System.Windows.Forms.Button buttonAdd;
+		private System.Windows.Forms.Button buttonDelete;
+		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+		private System.Windows.Forms.TextBox textBoxAirfieldName;
 	}
 }
