@@ -10,8 +10,12 @@ namespace WindowsFormsPlane
         public bool PlaneFloat { private set; get; }
         
         public bool LowerWing { private set; get; }
-        
-       
+
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
+
         public SeaPlane(int maxSpeed, float weight, Color mainColor, Color dopColor, bool planeFloat, bool lowerWing) :
             base(maxSpeed, weight, mainColor, 100, 60)
         {
