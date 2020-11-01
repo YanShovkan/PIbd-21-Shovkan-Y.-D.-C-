@@ -5,7 +5,7 @@ namespace WindowsFormsPlane
 {
 	class AirfieldCollection
 	{
-		readonly Dictionary<string, Airfield<Plane>> airdieldStages;
+		readonly Dictionary<string, Airfield<AirPlane>> airdieldStages;
 
 		public List<string> Keys => airdieldStages.Keys.ToList();
 
@@ -15,7 +15,7 @@ namespace WindowsFormsPlane
 
 		public AirfieldCollection(int pictureWidth, int pictureHeight)
 		{
-			airdieldStages = new Dictionary<string, Airfield<Plane>>();
+			airdieldStages = new Dictionary<string, Airfield<AirPlane>>();
 			this.pictureWidth = pictureWidth;
 			this.pictureHeight = pictureHeight;
 		}
@@ -26,7 +26,7 @@ namespace WindowsFormsPlane
 			{
 				return;
 			}
-			airdieldStages.Add(name, new Airfield<Plane>(pictureWidth, pictureHeight));
+			airdieldStages.Add(name, new Airfield<AirPlane>(pictureWidth, pictureHeight));
 		}
 
 		public void DelParking(string name)
@@ -37,7 +37,7 @@ namespace WindowsFormsPlane
 			}
 		}
 
-		public Airfield<Plane> this[string ind]
+		public Airfield<AirPlane> this[string ind]
 		{
 			get
 			{
@@ -49,7 +49,7 @@ namespace WindowsFormsPlane
 			}
 		}
 
-		public Airfield<Plane> this[int ind]
+		public Airfield<AirPlane> this[int ind]
 		{
 			get
 			{

@@ -2,8 +2,8 @@
 
 namespace WindowsFormsPlane
 {
-	public abstract class AirPlane : IAirTransport
-	{
+    public abstract class AirPlane : IAirTransport
+    {
         protected float _startPosX;
 
         protected float _startPosY;
@@ -26,7 +26,13 @@ namespace WindowsFormsPlane
             _pictureHeight = height;
         }
 
-        public abstract void DrawPlane (Graphics g);
+        public void SetMainColor(Color color)
+        {
+            MainColor = color;
+        }
+
+        public abstract void DrawPlane(Graphics g);
+
         public abstract void MovePlane(Direction direction);
 
     }

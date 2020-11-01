@@ -3,6 +3,8 @@ using System.Windows.Forms;
 
 namespace WindowsFormsPlane
 {
+	//public delegate void PlaneDelegate(AirPlane plane);
+
 	static class Program
 	{
 		[STAThread]
