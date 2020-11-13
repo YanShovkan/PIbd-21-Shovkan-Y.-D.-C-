@@ -91,7 +91,6 @@ namespace WindowsFormsPlane
         {
             var seaPlaneConfig = new FormSeaPlaneConfig();
             seaPlaneConfig.AddEvent(AddPlane);
-            seaPlaneConfig.AddEvent(complateMessage);
             seaPlaneConfig.Show();
         }
 
@@ -110,11 +109,34 @@ namespace WindowsFormsPlane
             }
         }
 
-        public void complateMessage(AirPlane plane)
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(plane != null)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Все ок");
+                if (airfieldCollection.SaveData(saveFileDialog.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (airfieldCollection.LoadData(openFileDialog.FileName))
+                {
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ReloadLevels();
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

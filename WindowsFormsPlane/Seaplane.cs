@@ -1,14 +1,15 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace WindowsFormsPlane
 {
-	class SeaPlane : Plane
-	{
-              
+    class SeaPlane : Plane
+    {
+
         public Color DopColor { private set; get; }
-        
+
         public bool PlaneFloat { private set; get; }
-        
+
         public bool LowerWing { private set; get; }
 
         public void SetDopColor(Color color)
@@ -23,7 +24,19 @@ namespace WindowsFormsPlane
             PlaneFloat = planeFloat;
             LowerWing = lowerWing;
         }
-
+        public SeaPlane(string info) : base(info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 6)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                PlaneFloat = Convert.ToBoolean(strs[4]);
+                LowerWing = Convert.ToBoolean(strs[5]);
+            }
+        }
         public override void DrawPlane(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -40,9 +53,11 @@ namespace WindowsFormsPlane
                 g.DrawLine(pen, _startPosX + 30, _startPosY + 45, _startPosX + 30, _startPosY + 55);
                 g.DrawLine(pen, _startPosX + 60, _startPosY + 45, _startPosX + 60, _startPosY + 55);
                 g.FillRectangle(dopColor, _startPosX + 10, _startPosY + 55, 70, 5);
-
             }
+        }
+        public override string ToString()
+        {
+            return $"{base.ToString()}{separator}{DopColor.Name}{separator}{PlaneFloat}{separator}{LowerWing}";
         }
     }
 }
-
