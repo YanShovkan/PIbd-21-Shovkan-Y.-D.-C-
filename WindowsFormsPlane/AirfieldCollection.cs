@@ -66,7 +66,7 @@ namespace WindowsFormsPlane
             }
         }
 
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -96,14 +96,13 @@ namespace WindowsFormsPlane
                     }
                 }
             }
-            return true;
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             using (StreamReader sr = new StreamReader(filename))
             {
@@ -139,13 +138,15 @@ namespace WindowsFormsPlane
                         var result = airfieldStages[key] + plane;
                         if (!result)
                         {
-                            return false;
+                            throw new NullReferenceException();
                         }
                         line = sr.ReadLine();
                     }
-                    return true;
                 }
-                return false;
+                else
+                {
+                    throw new FileFormatException();
+                }
             }
             
         }

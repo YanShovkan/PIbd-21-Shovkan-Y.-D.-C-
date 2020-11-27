@@ -32,7 +32,7 @@ namespace WindowsFormsPlane
 		{
 			if (p._places.Count >= p._maxCount)
 			{
-				return false;
+				throw new AirfieldOverflowException();
 			}
 			p._places.Add(plane);
 			return true;
@@ -42,7 +42,7 @@ namespace WindowsFormsPlane
 		{
 			if (index < 0 || index > p._places.Count - 1)
 			{
-				return null;
+				throw new PlaneNotFoundException(index);
 			}
 			T plane = p._places[index];
 			p._places.RemoveAt(index);
