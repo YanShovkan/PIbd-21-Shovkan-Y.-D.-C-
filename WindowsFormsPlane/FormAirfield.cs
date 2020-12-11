@@ -191,5 +191,15 @@ namespace WindowsFormsPlane
                 }
             }
         }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            if (listBoxAirfield.SelectedIndex > -1)
+            {
+                airfieldCollection[listBoxAirfield.SelectedItem.ToString()].Sort();
+                Draw();
+                logger.Info("Сортировка уровней");
+            }
+        }
     }
 }

@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace WindowsFormsPlane
 {
-    class SeaPlane : Plane
+    class SeaPlane : Plane, IEquatable<SeaPlane>
     {
 
         public Color DopColor { private set; get; }
@@ -58,6 +58,60 @@ namespace WindowsFormsPlane
         public override string ToString()
         {
             return $"{base.ToString()}{separator}{DopColor.Name}{separator}{PlaneFloat}{separator}{LowerWing}";
+        }
+
+        public bool Equals(SeaPlane other)
+        {
+            if(other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (PlaneFloat != other.PlaneFloat)
+            {
+                return false;
+            }
+            if (LowerWing != other.LowerWing)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+
+            }
+            if (!(obj is SeaPlane planeObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(planeObj);
+            }
         }
     }
 }

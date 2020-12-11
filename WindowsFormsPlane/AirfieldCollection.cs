@@ -78,25 +78,22 @@ namespace WindowsFormsPlane
                 foreach (var level in airfieldStages)
                 {
                     sw.WriteLine($"Airfield{separator}{level.Key}");
-                    IAirTransport plane = null;
-                    for (int i = 0; (plane = level.Value.GetNext(i)) != null; i++)
+                    foreach (IAirTransport plane in level.Value)
                     {
-                        if (plane != null)
+                        if (plane.GetType().Name == "Plane")
                         {
-                            if (plane.GetType().Name == "Plane")
-                            {
-                                sw.Write($"Plane{separator}");
-                            }
-                            if (plane.GetType().Name == "SeaPlane")
-                            {
-                                sw.Write($"SeaPlane{separator}");
-                            }
-                            sw.WriteLine(plane);
+                            sw.Write($"Plane{separator}");
                         }
+                        if (plane.GetType().Name == "SeaPlane")
+                        {
+                            sw.Write($"SeaPlane{separator}");
+                        }
+                        sw.WriteLine(plane);
                     }
                 }
             }
         }
+
 
         public void LoadData(string filename)
         {
@@ -148,7 +145,6 @@ namespace WindowsFormsPlane
                     throw new FileFormatException();
                 }
             }
-            
         }
     }
 }
