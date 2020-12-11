@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Airfield.cs" />
     <Compile Include="AirfieldCollection.cs" />
+    <Compile Include="AirfieldgAlreadyHaveThisPlaneException.cs" />
     <Compile Include="AirfieldOverflowException.cs" />
     <Compile Include="AirPlane.cs" />
     <Compile Include="Direction.cs" />
@@ -74,6 +75,7 @@
     </Compile>
     <Compile Include="IAirTransport.cs" />
     <Compile Include="Plane.cs" />
+    <Compile Include="PlaneComparer.cs" />
     <Compile Include="PlaneNotFoundException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace WindowsFormsPlane
 {
-    public class Plane : AirPlane
+    public class Plane : AirPlane, IEquatable<Plane>
     {
         protected readonly int planeWidth = 100;
 
@@ -73,7 +73,7 @@ namespace WindowsFormsPlane
             }
         }
 
-        public override void  DrawPlane(Graphics g)
+        public override void DrawPlane(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
             Brush mainColor = new SolidBrush(MainColor);
@@ -92,6 +92,46 @@ namespace WindowsFormsPlane
         public override string ToString()
         {
             return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
+        }
+        public bool Equals(Plane other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Plane planeObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(planeObj);
+            }
         }
     }
 }
